@@ -24,8 +24,9 @@ class immeuble extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function depenses()
+    
+    public function appartements()
     {
-        return $this->hasMany(depense::class);
-    }
+        return $this->hasMany(appartement::class);
+        }
 }

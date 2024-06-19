@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImmeubleController;
 use App\Http\Controllers\DepenseController;
+use App\Http\Controllers\AppartementController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -47,7 +48,19 @@ Route::group([
 ], function ($router) {
     Route::get('/index', [DepenseController::class, 'index']);
     Route::post('/create', [DepenseController::class, 'create']);
-    // Route::post('/update', [DepenseController::class, 'update']);
+     Route::post('/update', [DepenseController::class, 'update']);
     // Route::delete('/delete/{id}', [DepenseController::class, 'delete']);
     // Route::get('/show/{id}', [DepenseController::class, 'show']);
+});
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'appartement'
+], function ($router) {
+    Route::get('/index', [AppartementController::class, 'index']);
+    Route::post('/create', [AppartementController::class, 'create']);
+    Route::post('/store', [AppartementController::class, 'store']);
+
+    Route::post('/update', [AppartementController::class, 'update']);
+    Route::delete('/delete/{id}', [AppartementController::class, 'delete']);
+    Route::get('/show/{id}', [AppartementController::class, 'show']);
 });

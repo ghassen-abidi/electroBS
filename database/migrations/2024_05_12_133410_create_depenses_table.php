@@ -15,10 +15,15 @@ return new class extends Migration
     {
         Schema::create('depenses', function (Blueprint $table) {
             $table->id();
-            $table->double('montant');
+            $table->string('montant');
             $table->string('description');
+            $table->string('type');
             $table->date('date');
-            $table->foreignId('immeuble_id')->constrained()->onDelete('cascade');
+            
+            $table->unsignedBigInteger('appartement_id')
+            ->references('id')
+            ->on('appartements')
+            ->onDelete('cascade');
             
             $table->timestamps();
         });

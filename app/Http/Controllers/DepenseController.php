@@ -25,12 +25,13 @@ class DepenseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //create depenses
         $depense = depense::create([
             'montant' => $request->montant,
             'description' => $request->description,
+            'type'=>$request->type,
             'date' => $request->date,
             'immeuble_id' => $request->immeuble_id,
         ]);
@@ -46,7 +47,15 @@ class DepenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //store depenses
+        $depense = depense::create([
+            'montant' => $request->montant,
+            'description' => $request->description,
+            'type'=>$request->type,
+            'date' => $request->date,
+            'immeuble_id' => $request->immeuble_id,
+            ]);
+            return response()->json($depense);
     }
 
     /**

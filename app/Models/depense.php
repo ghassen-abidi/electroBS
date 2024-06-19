@@ -11,11 +11,12 @@ class depense extends Model
     protected $fillable = [
         'montant',
         'description',
+        'type',
         'date',
-        'immeuble_id',
+        'appartement_id',
     ];
-    public function immeuble()
+    public function appartement()
     {
-        return $this->belongsTo(immeuble::class);
-    }
+        return $this->belongsTo(Appartement::class);
+        }
 }
