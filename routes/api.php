@@ -39,7 +39,7 @@ Route::group([
 ], function ($router) {
     Route::get('/index', [ImmeubleController::class, 'index']);
     Route::post('/create', [ImmeubleController::class, 'create']);
-    Route::post('/update', [ImmeubleController::class, 'update']);
+    Route::post('/update/{id}', [ImmeubleController::class, 'update']);
     Route::delete('/delete/{id}', [ImmeubleController::class, 'delete']);
     Route::get('/show/{nom}', [ImmeubleController::class, 'show']);
     Route::get('/store',[ImmeubleController::class,'store']);
@@ -62,7 +62,7 @@ Route::group([
     Route::post('/create', [AppartementController::class, 'create']);
     Route::post('/store', [AppartementController::class, 'store']);
 
-    Route::post('/update', [AppartementController::class, 'update']);
+    Route::post('/update/{id}', [AppartementController::class, 'update']);
     Route::post('/delete/{id}', [AppartementController::class, 'delete']);
     Route::get('/show/{id}', [AppartementController::class, 'show']);
 });

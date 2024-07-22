@@ -81,7 +81,17 @@ class AppartementController extends Controller
      */
     public function update(Request $request, appartement $appartement)
     {
-        //
+        //update appartement 
+        $appartement = appartement::find($request->id);
+        $appartement->numero = $request->numero;
+        $appartement->description = $request->description;
+        $appartement->prix = $request->prix;
+        $appartement->etage = $request->etage;
+        $appartement->parking = $request->parking;
+        
+        $appartement->save();
+        return response()->json($appartement);
+
     }
 
     /**
