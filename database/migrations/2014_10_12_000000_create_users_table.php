@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('fullname');
             $table->string('email')->unique();
-            $table->string('phone');
+           
             $table->string('address');
              $table->string('phonenumber')->nullable();
              $table->string('role')->default('client');

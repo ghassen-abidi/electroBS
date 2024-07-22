@@ -30,6 +30,8 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile/{id}', [AuthController::class, 'userProfile']);    
     Route::post('/resetPassword', [AuthController::class, 'resetPassword']);
+    Route::get('/getAllUsers',[AuthController::class,'getAllUsers']);
+    Route::post('/updateUser/{id}', [AuthController::class, 'updateUser']);
 });
 Route::group([
     'middleware' => 'api',
@@ -61,6 +63,6 @@ Route::group([
     Route::post('/store', [AppartementController::class, 'store']);
 
     Route::post('/update', [AppartementController::class, 'update']);
-    Route::delete('/delete/{id}', [AppartementController::class, 'delete']);
+    Route::post('/delete/{id}', [AppartementController::class, 'delete']);
     Route::get('/show/{id}', [AppartementController::class, 'show']);
 });

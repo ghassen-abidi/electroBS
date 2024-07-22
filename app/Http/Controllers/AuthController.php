@@ -50,7 +50,7 @@ public function register(Request $request)
     $validator = Validator::make($request->all(), [
         'fullname' => 'required|string|between:2,100',
         'email' => 'required|string|email|max:100|unique:users',
-        'phone' => 'required|string|max:20',
+        'phonenumber' => 'required|string|max:20',
         'address' => 'required|string|max:255',
         //the role can be superµAdmin or and by default is client only
         'role' => 'required|string|max:20',
@@ -122,6 +122,21 @@ public function resetPassword(Request $request)
         'password' => $randomPassword,
     ], 200);
 }
+
+// get all users
+public function getAllUsers(Request $resquest)
+{
+    $users = User::all();
+    return response()->json($users);
+}
+// function update User 
+public function updateUser(Request $request, $id)
+{
+    $user = User::find($id);
+    $user->update($request->all());
+    return response()->json($user);
+}
+
 
 
 

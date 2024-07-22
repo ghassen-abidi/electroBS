@@ -90,8 +90,12 @@ class AppartementController extends Controller
      * @param  \App\Models\appartement  $appartement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(appartement $appartement)
+    public function delete (appartement $appartement , $id)
     {
-        //
+        // delete appartement
+        $appartement = appartement::find($id);
+        $appartement->delete();
+        return response()->json($appartement);
+        
     }
 }
