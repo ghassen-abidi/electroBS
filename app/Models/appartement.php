@@ -14,7 +14,7 @@ class appartement extends Model
         'prix',
         'etage',
         'parking',
-        'immeuble_id',
+        'immeublesid',
     ];
     public function immeuble()
     {

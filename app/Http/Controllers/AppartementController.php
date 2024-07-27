@@ -44,7 +44,7 @@ class AppartementController extends Controller
         $appartement->prix = $request->prix;
         $appartement->etage = $request->etage;
         $appartement->parking = $request->parking;
-        $appartement->immeuble_id = $request->immeuble_id;
+        $appartement->immeubles_id = $request->immeubles_id;
         $appartement->save();
         return response()->json($appartement);
         
