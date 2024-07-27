@@ -12,11 +12,12 @@ class ImmeubleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request,$id)
     {
-        //get all immeubles
-        $immeubles = immeuble::all();
-        return response()->json($immeubles);
+        //get immeubles par id
+        $immeuble = immeuble::where('user_id',$id)->get();
+        return response()->json($immeuble);
+        
 
     }
 

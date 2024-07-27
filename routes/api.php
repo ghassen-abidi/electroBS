@@ -39,7 +39,7 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'immeuble'
 ], function ($router) {
-    Route::get('/index', [ImmeubleController::class, 'index']);
+    Route::get('/index/{id}', [ImmeubleController::class, 'index']);
     Route::post('/create', [ImmeubleController::class, 'create']);
     Route::post('/update/{id}', [ImmeubleController::class, 'update']);
     //destroy 
@@ -61,7 +61,7 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'appartement'
 ], function ($router) {
-    Route::get('/index', [AppartementController::class, 'index']);
+    Route::get('/index/{id}', [AppartementController::class, 'index']);
     Route::post('/create', [AppartementController::class, 'create']);
     Route::post('/store', [AppartementController::class, 'store']);
 
