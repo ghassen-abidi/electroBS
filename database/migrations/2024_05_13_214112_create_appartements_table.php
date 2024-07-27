@@ -21,7 +21,15 @@ return new class extends Migration
             $table->string('prix');
             $table->string('etage');
             $table->string('parking');
-            $table->foreignId('immeuble_id')->constrained('immeubles');
+            
+
+
+             $table->unsignedBigInteger('immeubles_id');
+
+            $table->foreign('immeubles_id')
+                  ->references('id')
+                  ->on('immeubles')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }

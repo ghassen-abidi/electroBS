@@ -136,6 +136,15 @@ public function updateUser(Request $request, $id)
     $user->update($request->all());
     return response()->json($user);
 }
+//function delete user 
+
+public function deleteUser($id)
+{
+    $user = User::find($id);
+    $user->delete();
+    return response()->json($user);
+
+}
 
 
 
