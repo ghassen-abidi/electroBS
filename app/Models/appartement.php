@@ -25,4 +25,8 @@ class appartement extends Model
     {
         return $this->hasMany(depense::class);
     }
+    public function paiements()
+    {
+        return $this->hasMany(paiement::class);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImmeubleController;
 use App\Http\Controllers\DepenseController;
 use App\Http\Controllers\AppartementController;
+use App\Http\Controllers\PaiementController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,6 +19,7 @@ use App\Http\Controllers\AppartementController;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    print("hello, world");
     return $request->user();
 });
 Route::group([
@@ -25,7 +27,7 @@ Route::group([
     'prefix' => 'auth'
 ], function ($router) {
     Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/register', [AuthController::class, 'register'])/*>middleware('role:admin,user')*/;
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile/{id}', [AuthController::class, 'userProfile']);    
@@ -68,4 +70,14 @@ Route::group([
     Route::post('/update/{id}', [AppartementController::class, 'update']);
     Route::post('/delete/{id}', [AppartementController::class, 'delete']);
     Route::get('/show/{id}', [AppartementController::class, 'show']);
+});
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'paiement'
+], function ($router) {
+    Route::get('/index', [PaiementController::class, 'index']);
+    Route::post('/store', [PaiementController::class, 'store']);
+    Route::post('/update', [PaiementController::class, 'update']);
+    Route::delete('/delete/{id}', [PaiementController::class, 'delete']);
+    Route::get('/show/{id}', [PaiementController::class, 'show']);
 });
